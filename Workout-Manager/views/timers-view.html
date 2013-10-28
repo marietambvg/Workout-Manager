@@ -1,0 +1,38 @@
+<div data-role="view" 
+     id="timers-view" 
+     data-id="timers-view" 
+     data-layout="main-layout" 
+     data-title="Timers" 
+     data-show="app.timersApi.run"
+     >
+    <h1>Choose a timer</h1>
+    <div class="content">
+
+        <div class="startButtonHolder">
+            <button class="touchSurface"  
+                id="interval-timer" 
+                data-role="touch" 
+                data-tap="app.timersApi.navigateToIntervalTimer">
+                <h3>Interval Timer</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder">
+            <button class="touchSurface"
+                id="countdown-timer" 
+                data-role="touch"
+                data-tap="app.timersApi.navigateToCountdownTimer">
+                <h3>Countdown timer</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder">
+            <button class="touchSurface"
+                id="stopwatch-timer" 
+                data-role="touch" 
+                data-tap="app.timersApi.navigateToStopwatchTimer">
+                <h3>Stopwatch timer</h3>
+            </button>
+        </div>
+
+    </div>
+</div>
+

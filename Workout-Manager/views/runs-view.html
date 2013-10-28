@@ -1,0 +1,30 @@
+<div data-role="view" 
+     id="runs-view" 
+     data-id="runs-view" 
+     data-layout="main-layout" 
+     data-title="Runs" 
+     data-show="app.runsApi.run"
+     >
+    <h1>Choose your run</h1>
+    <div class="content">
+
+        <div class="startButtonHolder">
+            <button class="touchSurface"  
+                id="go-to-run-for-time-view-button" 
+                data-role="touch" 
+                data-tap="app.runsApi.navigateToRunForTime">
+                    <h3>Run for time</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder">
+            <button class="touchSurface"  
+                id="go-to-run-for-distance-view-button" 
+                data-role="touch" 
+                data-tap="app.runsApi.navigateToRunForDistance">
+                <h3>Run for distance</h3>
+            </button>
+        </div>
+        
+
+    </div>
+</div>
