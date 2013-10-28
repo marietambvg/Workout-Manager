@@ -1,0 +1,33 @@
+<div data-role="view" 
+     id="capture-view" 
+     data-id="capture-view" 
+     data-layout="main-layout" 
+     data-title="Media" 
+     data-show="app.captureApi.run"
+     >
+    <h1>Have some fun</h1>
+    <div class="content">
+
+        <div class="startButtonHolder">
+            <button class="touchSurface"  id="capture-video" data-role="touch" data-tap="app.captureApi._captureVideo">
+                <h3>Capture Video</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder">
+            <button class="touchSurface"  id="capture-audio" data-role="touch" data-tap="app.captureApi._captureAudio">
+                <h3>Capture Audio</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder">
+            <button class="touchSurface" id="capture-image" data-role="touch" data-tap="app.captureApi._captureImage">
+                <h3>Capture Image</h3>
+            </button>
+        </div>
+
+        <div class="results">
+            <div id="media"></div>
+        </div>
+
+    </div>
+</div>
+

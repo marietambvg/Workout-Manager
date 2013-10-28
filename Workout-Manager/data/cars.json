@@ -1,0 +1,74 @@
+[
+	{
+		"id":1,
+        "model": "Audy",
+		"color": "Red",
+		"year": 2010,
+		"status": "Free",
+        "returnDate":"",
+        "rentOptions":
+            {
+             "hour":15,
+             "day":300,
+             "week":1800
+            }
+
+	},{
+		"id":2,
+        "model": "Audy",
+		"color": "Blue",
+		"year": 2012,
+		"status": "Rent",
+        "returnDate":"15.10.2013",
+        "rentOptions":
+            {
+             "hour":15,
+             "day":300,
+             "week":1800
+            }
+
+	},{
+		"id":3,
+        "model": "Honda",
+		"color": "Silver",
+		"year": 2010,
+		"status": "Rent",
+        "returnDate":"25.10.2013",
+        "rentOptions":
+            {
+             "hour":15,
+             "day":300,
+             "weel":1800
+            }
+
+	},{
+		"id":1,
+        "model": "Toyota",
+		"color": "Green",
+		"year": 2011,
+		"status": "Free",
+        "returnDate":"",
+        "rentOptions":
+            {
+             "hour":15,
+             "day":300,
+             "week":1800
+            }
+
+	},{
+		"id":4,
+        "model": "Toyota",
+		"color": "Blue",
+		"year": 2008,
+		"status": "Free",
+        "returnDate":"",
+        "rentOptions":
+            {
+             "hour":15,
+             "day":300,
+             "week":1800
+            }
+
+	}
+
+]

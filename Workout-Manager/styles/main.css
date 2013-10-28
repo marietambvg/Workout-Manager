@@ -1,0 +1,138 @@
+body, html
+{
+    margin: 0; 
+    height: 100%;
+    width: 100%;
+}
+
+h1, h2
+{
+    text-align: center;
+    color: #35B3E6
+}
+h4
+{
+    text-align: left;
+    padding-left:10px;
+    color: #35B3E6
+}
+
+
+h3
+{
+    text-align: center;
+    color: white
+}
+
+#result-time h2, #distance-result-time h2
+{
+    color: #FF0084;
+}
+
+td, th
+{
+    text-align: center;
+    width: 100px;
+}
+
+#results, #distance-results 
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#table-results, #distance-table-results  
+{
+    width: 100%;
+    margin-top: 50px;
+}
+
+#results td, #distance-results td, #current-distance td, #distance-current-distance td
+{
+    text-align: left;
+    color: #FF0084;
+    padding-left: 5px;
+    padding-bottom: 15px;
+    font-size: 15px;
+}
+
+.inputBoxHolder
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 5px;
+}
+
+input
+{
+    width: 100%;
+    height: 2em;
+    margin-bottom: 10px;
+}
+
+.touchSurface
+{
+    width: 100%;
+    text-align: center;
+    height: 3.5em;
+    /*background-color: #35B3E6;*/
+    border-style: none;
+    border-radius: 5px;
+    background: #1e5799;
+    background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e5799), color-stop(50%, #2989d8), color-stop(51%, #207cca), color-stop(100%, #7db9e8));
+    background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -o-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -ms-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+}
+#time-run-button-start-button-holder
+{
+    margin-top: 45%;
+}
+#network-button
+{
+    margin-top: 20%;
+    margin-bottom:20px;
+}
+#home-clearstorage-button
+{
+    margin-bottom:20px;
+}
+
+.content .startButtonHolder{
+    margin-bottom:20px;
+}
+
+#distance-run-button-start-button-holder
+{
+    margin-top: 59%;
+}
+#save-current-workout
+{
+    margin-top: 55%;
+}
+#distance-save-current-workout
+{
+    margin-top: 45%;
+}
+
+.startButtonHolder
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.track-distance-holder{
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50%;
+}
+.track-distance{
+    width:100%
+}

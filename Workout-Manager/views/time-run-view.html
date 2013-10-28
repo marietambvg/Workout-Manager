@@ -1,0 +1,67 @@
+<div data-role="view" 
+     id="time-run-view" 
+     data-id="time-run-view" 
+     data-layout="main-layout" 
+     data-title="Time run" 
+     data-show="app.timeRun.init"
+     data-hide="app.timeRun.close"
+     >
+    <h1>Run for time</h1>
+    <div id="time-run-user-data" data-bind="visible:userDataVisibility" class="view-content">
+        <h2>Input time you want to run today </h2>
+        <div id="hours" class="inputBoxHolder">
+            <input id="variable-hours-input" type="number" placeholder="Enter hours"/>
+        </div>
+        <div id="minutes" class="inputBoxHolder">
+            <input id="variable-minutes-input"  type="number" placeholder="Enter minutes" />
+        </div>
+        <div id="seconds" class="inputBoxHolder">
+            <input id="variable-seconds-input"  type="number" placeholder="Enter seconds" />
+        </div>
+        <div class="startButtonHolder" id="time-run-button-start-button-holder">
+            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.run">
+                <h3>START </h3>
+            </button>
+        </div>
+    </div>
+
+    <div class="track-distance-holder" id="current-distance" data-bind="invisible:isInvisible" invisible="true">
+        <table class="track-distance">
+            <tr>
+                <td>Current run distance</td>
+                <td data-bind="text:distance"></td>
+            </tr>
+            <tr>
+                <td>Time left</td>
+                <td data-bind="text:timeLeft"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="results" data-bind="visible:isVisible" visible="false">
+        <div id="result-time">
+            <h2 data-bind="text:time"></h2>
+        </div>
+        <table id="table-results">
+            <tr>
+                <td>Run distance:</td>
+                <td id="distance-result" data-bind="text:distanceResult"></td>
+            </tr>
+            <tr>
+                <td>Average speed:</td>
+                <td id="speed-result" data-bind="text:speed"></td>
+            </tr>
+            <tr>
+                <td>Run time:</td>
+                <td id="distance-time-result" data-bind="text:currentRunTime"></td>
+            </tr>
+        </table>
+        <div class="startButtonHolder">
+            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-workout">
+                <h3>Save current run</h3>
+            </button>
+        </div>
+    </div>
+
+</div>
+

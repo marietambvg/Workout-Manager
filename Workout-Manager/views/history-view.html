@@ -1,0 +1,43 @@
+<div data-role="view" 
+     id="history-view" 
+     data-id="categories-view"
+     data-layout="main-layout" 
+     data-title="History"
+     data-show="app.runs.init">
+    <div id="runs-holder">
+        <h1>Your recent runs </h1>
+        <select id="runs-list" 
+                data-role="dropdownlist"
+                data-bind="source: runs, events: { change: change, select:change}, invisible:isInvisible"
+                data-text-field="runname"
+                data-value-field="runname">
+        </select>
+        <div data-bind="visible:isVisible">
+            <h2>No stored Run!</h2>
+        </div>
+        <div id="selected-run-info" data-bind="visible:isVisibleRunInfo">
+            <div id="route-holder" style="margin-top:20px;width:100%;height:200px">
+            </div>
+            <div>
+                <h4>
+                    <span>Run date: </span><span data-bind="text:runDate"></span>
+                </h4>
+            </div>
+            <div>
+                <h4>
+                    <span>Run distance: </span><span data-bind="text:runDistance"></span>
+                </h4>
+            </div>
+            <div>
+                <h4>
+                    <span>Run time: </span><span data-bind="text:runTime"></span>
+                </h4>
+            </div>
+            <div>
+                <h4>
+                    <span>Run average speed: </span><span data-bind="text:runSpeed"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

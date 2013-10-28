@@ -1,0 +1,67 @@
+<div id="distance-run-view"
+     data-id="distance-run-view" 
+     data-role="view"  
+     data-title="Distance Run"
+     data-layout="main-layout"
+     data-show="app.distanceRun.init"
+     data-hide="app.distanceRun.close"
+     >
+
+    <div id="distance-run">
+        <h1>Run for distance </h1>
+
+        <div id="distance-run-user-data" data-bind="visible:userDataVisibility">
+            <h2>Input distance you want to run today </h2>
+            <div id="km" class="inputBoxHolder">
+                <input id="variable-km-input"  type="number" placeholder="Enter kilometres"/>
+            </div>
+            <div id="metrеs" class="inputBoxHolder">
+                <input id="variable-metres-input" type="number" placeholder="Enter metres" />
+            </div>
+            <div class="startButtonHolder" id="distance-run-button-start-button-holder">
+                <button class="touchSurface" id="distance-run-start-button" data-role="touch" data-tap="app.distanceRun.run">
+                    <h3>START</h3>
+                </button>
+            </div>
+        </div>
+
+        <div class="track-distance-holder" id="distance-current-distance" data-bind="invisible:isInvisible" invisible="true">
+            <table class="track-distance">
+                <tr>
+                    <td>Current run distance</td>
+                    <td data-bind="text:distance"></td>
+                </tr>
+                <tr>
+                    <td>Current run time</td>
+                    <td data-bind="text:currentRunTime"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="distance-results" data-bind="visible:isVisible" visible="false">
+            <div id="distance-result-time">
+                <h2 data-bind="text:status"></h2>
+            </div>
+            <table id="distance-table-results">
+                <tr>
+                    <td>Run distance:</td>
+                    <td id="distance-distance-result" data-bind="text:distanceResult"></td>
+                </tr>
+                <tr>
+                    <td>Average speed:</td>
+                    <td id="distance-speed-result" data-bind="text:speed"></td>
+                </tr>
+                <tr>
+                    <td>Run time:</td>
+                    <td id="distance-time-result" data-bind="text:currentRunTime"></td>
+                </tr>
+            </table>
+            <div class="startButtonHolder">
+                <button class="touchSurface" data-role="touch" data-tap="app.distanceRun.save" id="distance-save-current-workout" >
+                    <h3>Save current run</h3>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

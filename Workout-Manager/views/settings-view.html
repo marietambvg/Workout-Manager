@@ -1,0 +1,24 @@
+<!--Settings View-->
+<div data-role="view" 
+     id="settings-view" 
+     data-id="settings-view" 
+     data-layout="main-layout" 
+     data-title="Settings"
+     data-show="app.connectionApi.init" 
+     data-hide="app.connectionApi.close"
+     >
+    
+    <div>
+        <div class="startButtonHolder">
+            <button class="touchSurface" id="network-button"><h3 data-bind="text: state">Internet Access Enabled</h3></button>
+        </div>
+        <div class="startButtonHolder" id="clearstorage-button" >
+            <button class="touchSurface" id="home-clearstorage-button" data-role="touch" data-tap="app.localStorage.clear"><h3>Clear History</h3></button>
+        </div>
+        <div class="startButtonHolder" id="go-to-capture-page-holder" >
+            <button class="touchSurface" id="go-to-capture-page-button" data-role="touch" data-tap="app.captureApi.navigate"><h3>Make some records</h3></button>
+        </div>
+    </div>
+
+</div>
+
