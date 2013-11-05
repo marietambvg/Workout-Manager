@@ -117,7 +117,6 @@ document.addEventListener("deviceready", function() {
                     }
                 });
                 
-                
                 a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);
                 a.timeRun.timerTimeLeft=setInterval(
                     function(){
@@ -127,7 +126,6 @@ document.addEventListener("deviceready", function() {
                 
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
                     
-                
                 setTimeout(function () {
                     a.timeRun.beep(hours, minutes, seconds);
                 }, time);

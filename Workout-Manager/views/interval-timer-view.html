@@ -3,11 +3,19 @@
      data-role="view"  
      data-title="Interval Timer"
      data-layout="main-layout"
-     data-show="app.intervals.init"
-     data-hide="app.intervals.close"
+     data-show="app.intervalsApi.init"
+     data-hide="app.intervalsApi.close"
      >
 
     <div id="interval-timer">
         <h1>Interval Timer </h1>
     </div>
+     <div class="startButtonHolder">
+            <button class="touchSurface"  
+                id="start-standard-tabata-button" 
+                data-role="touch" 
+                data-tap="app.intervalsApi.navigateToPlayIntervalsView">
+                <h3>Standard tabata</h3>
+            </button>
+        </div>
 </div>

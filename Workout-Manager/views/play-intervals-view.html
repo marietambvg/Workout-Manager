@@ -1,0 +1,94 @@
+<div data-role="view" 
+     id="play-intervals-view" 
+     data-id="play-intervals-view" 
+     data-layout="main-layout" 
+     data-title="Play Intervals" 
+     data-show="app.intervalsApi.init"
+     >
+    <div visible="true" data-bind="visible:IsVisibleCurrentWorkoutDetails">
+        <h1>Current workout details</h1>
+        <table class="play-intervals-phase-table">
+            <tr>
+                <td>
+                    <h2>Total Intervals:</h2>
+                </td>
+                <td>
+                    <h2 class="intervals-result" data-bind="text:totalIntervals"></h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Work time:</h2>
+                </td>
+                <td>
+                    <h2 class="intervals-result" data-bind="text:workTime"></h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Rest time:</h2>
+                </td>
+                <td>
+                    <h2 class="intervals-result" data-bind="text:restTime"></h2>
+                </td>
+            </tr>
+        </table>
+        <div class="startButtonHolder">
+                <button class="touchSurface"  
+                        id="start-workout-button" 
+                        data-role="touch" 
+                        data-tap="app.intervalsApi.startWorkout">
+                    <h3>Start workout!</h3>
+                </button>
+            </div>
+    </div>
+    <div visible="false" data-bind="visible:isVisible" >
+        <h1>Workout Data</h1>
+
+        <div id="status-holder-div" id="track-interval-time" >
+            <table class="play-intervals-phase-table">
+                <tr>
+                    <td>
+                        <h2>Intervals left</h2>
+                    </td>
+                    <td>
+                        <h2>Phase</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2 class="intervals-result" data-bind="text:interval"></h2>
+                    </td>
+                    <td>
+                        <h2 class="intervals-result" data-bind="text:phase"></h2>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <div id="time-left-holder-div">
+            <table class="play-intervals-time-left-table">
+                <tr>
+                    <td>
+                        <h2>Time left</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2 class="intervals-result" data-bind="text:timeLeft"></h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="weldone-message" invisible="true" data-bind="invisible:isInvisible" >
+        <div>
+            <h3 class="weldone-message">You finished your workout!</h3>
+        </div>
+        <div>
+            <h3 class="weldone-message">Welldone!</h3>
+        </div>
+    </div>
+
+</div>

@@ -10,6 +10,7 @@ h1, h2
     text-align: center;
     color: #35B3E6
 }
+
 h4
 {
     text-align: left;
@@ -24,6 +25,22 @@ h3
     color: white
 }
 
+.weldone-message
+{
+    text-align: center;
+    color:#FF0084;
+    font-size:35px;
+    line-height:50px;
+    padding-top:50px;
+}
+
+.intervals-result
+{
+    text-align: center;
+    color:#FF0084;
+    font-size:35px;
+}
+
 #result-time h2, #distance-result-time h2
 {
     color: #FF0084;
@@ -33,6 +50,18 @@ td, th
 {
     text-align: center;
     width: 100px;
+}
+
+.play-intervals-phase-table, .play-intervals-time-left-table
+{
+    text-align: center;
+    width:100%
+}
+
+.play-intervals-phase-table, .play-intervals-time-left-table th,td
+{
+    text-align: center;
+    width:100%
 }
 
 #results, #distance-results 
