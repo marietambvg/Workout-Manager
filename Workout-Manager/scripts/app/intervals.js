@@ -9,6 +9,7 @@ document.addEventListener("deviceready", function() {
     var currentInterval;
     var currentTimeLeft; 
     var isNewInterval = true;
+    var background="#FFB6C1";
     
     (function(a) {
         a.intervalsApi = {
@@ -32,7 +33,8 @@ document.addEventListener("deviceready", function() {
                     totalIntervals:intervals,
                     workTime:work,
                     restTime:rest,
-                    prepareTime:prepare
+                    prepareTime:prepare,
+                    backgroundcolor:background,
                 });
                 kendo.bind(e.view.element, vm, kendo.mobile.ui);
             },
@@ -53,12 +55,14 @@ document.addEventListener("deviceready", function() {
                     interval:currentInterval,
                     timeLeft:currentTimeLeft,
                     phase:currentPhase,
+                    backgroundcolor:background,
                     
                     countdownPrepare:function() {
                         if (currentPhase == "PREPARE") {
                             if (currentTimeLeft > 0) {
                                 currentTimeLeft--;
                                 vm.set("timeLeft", currentTimeLeft);
+                                vm.set("backgroundcolor","#FFB6C1");
                             }
                             else {
                                 clearInterval(a.intervalsApi.prepareTimer);
@@ -77,6 +81,7 @@ document.addEventListener("deviceready", function() {
                             currentInterval--;
                             vm.set("interval", currentInterval);
                             vm.set("phase", currentPhase);
+                            vm.set("backgroundcolor","#9ACD32");
                         } 
                         
                         if (currentTimeLeft > 0) {
@@ -91,6 +96,7 @@ document.addEventListener("deviceready", function() {
                                 vm.set("phase", "WORK");
                                 currentTimeLeft = work;
                                 vm.set("timeLeft", currentTimeLeft);
+                                vm.set("backgroundcolor","#DC143C");
                             }
                             else {
                                 if (currentInterval == 0) {

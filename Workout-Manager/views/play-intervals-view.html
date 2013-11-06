@@ -2,8 +2,8 @@
      id="play-intervals-view" 
      data-id="play-intervals-view" 
      data-layout="main-layout" 
-     data-title="Play Intervals" 
      data-show="app.intervalsApi.initIntervals"
+    class="blackBackground"
     
      >
     <div visible="true" data-bind="visible:IsVisibleCurrentWorkoutDetails">
@@ -51,7 +51,7 @@
             </button>
         </div>
     </div>
-    <div visible="false" data-bind="visible:isVisible" >
+    <div visible="false" data-bind="style: {backgroundColor: backgroundcolor},visible:isVisible">
         <h1>Workout Data</h1>
 
         <div id="status-holder-div" id="track-interval-time" >
