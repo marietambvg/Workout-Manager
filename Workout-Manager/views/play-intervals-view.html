@@ -3,7 +3,8 @@
      data-id="play-intervals-view" 
      data-layout="main-layout" 
      data-title="Play Intervals" 
-     data-show="app.intervalsApi.init"
+     data-show="app.intervalsApi.initIntervals"
+    
      >
     <div visible="true" data-bind="visible:IsVisibleCurrentWorkoutDetails">
         <h1>Current workout details</h1>
@@ -14,6 +15,14 @@
                 </td>
                 <td>
                     <h2 class="intervals-result" data-bind="text:totalIntervals"></h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Prepare time:</h2>
+                </td>
+                <td>
+                    <h2 class="intervals-result" data-bind="text:prepareTime"></h2>
                 </td>
             </tr>
             <tr>
@@ -34,13 +43,13 @@
             </tr>
         </table>
         <div class="startButtonHolder">
-                <button class="touchSurface"  
-                        id="start-workout-button" 
-                        data-role="touch" 
-                        data-tap="app.intervalsApi.startWorkout">
-                    <h3>Start workout!</h3>
-                </button>
-            </div>
+            <button class="touchSurface"  
+                    id="start-workout-button" 
+                    data-role="touch" 
+                    data-tap="app.intervalsApi.startWorkout">
+                <h3>Start workout!</h3>
+            </button>
+        </div>
     </div>
     <div visible="false" data-bind="visible:isVisible" >
         <h1>Workout Data</h1>
@@ -52,33 +61,25 @@
                         <h2>Intervals left</h2>
                     </td>
                     <td>
-                        <h2>Phase</h2>
+                        <h2 class="intervals-result" data-bind="text:interval"></h2>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h2 class="intervals-result" data-bind="text:interval"></h2>
+                        <h2>Phase</h2>
                     </td>
                     <td>
                         <h2 class="intervals-result" data-bind="text:phase"></h2>
                     </td>
                 </tr>
             </table>
-            
         </div>
         <div id="time-left-holder-div">
-            <table class="play-intervals-time-left-table">
-                <tr>
-                    <td>
-                        <h2>Time left</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h2 class="intervals-result" data-bind="text:timeLeft"></h2>
-                    </td>
-                </tr>
-            </table>
+
+            <h1>Time left</h1>
+
+            <h2 class="intervals-result" data-bind="text:timeLeft"></h2>
+        
         </div>
     </div>
 

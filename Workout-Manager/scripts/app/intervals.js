@@ -1,24 +1,38 @@
 var app = app || {};
 
 document.addEventListener("deviceready", function() {
-    var intervals = 4;
-    var rest = 2;
-    var work = 5;
-    var currentInterval = 4;
-    var currentTimeLeft = rest;
-    var currentPhase = "REST";
+    var intervals;
+    var rest;
+    var work;
+    var prepare;
+    var currentPhase = "PREPARE";
+    var currentInterval;
+    var currentTimeLeft; 
     var isNewInterval = true;
     
-    (function(a) { 
+    (function(a) {
         a.intervalsApi = {
             init:function(e) {
+            },
+            
+            getCurrentValues:function() {
+                intervals = $("#variable-intervals-number").val();
+                work = $("#variable-work-time-input").val();
+                rest = $("#variable-rest-time-input").val();
+                prepare = $("#variable-prepare-time-input").val();
+                currentInterval=intervals;
+                currentTimeLeft=prepare; 
+            },
+            
+            initIntervals:function(e) {
                 var vm = kendo.observable({
                     IsVisibleCurrentWorkoutDetails:true,
                     isVisible:false,
                     isInvisible:true,
                     totalIntervals:intervals,
                     workTime:work,
-                    restTime:rest
+                    restTime:rest,
+                    prepareTime:prepare
                 });
                 kendo.bind(e.view.element, vm, kendo.mobile.ui);
             },
@@ -26,7 +40,8 @@ document.addEventListener("deviceready", function() {
             close: function() { 
             },
             
-            navigateToPlayIntervalsView: function() { 
+            navigateToPlayIntervalsView: function() {
+                a.intervalsApi.getCurrentValues();
                 app.application.navigate("views/play-intervals-view.html#play-intervals-view");
             },
             
@@ -39,23 +54,37 @@ document.addEventListener("deviceready", function() {
                     timeLeft:currentTimeLeft,
                     phase:currentPhase,
                     
+                    countdownPrepare:function() {
+                        if (currentPhase == "PREPARE") {
+                            if (currentTimeLeft > 0) {
+                                currentTimeLeft--;
+                                vm.set("timeLeft", currentTimeLeft);
+                            }
+                            else {
+                                clearInterval(a.intervalsApi.prepareTimer);
+                                navigator.notification.beep(1);
+                                a.intervalsApi.timer = setInterval(vm.countdownIntervals, 1000);
+                            }
+                        }
+                    },
+                    
                     countdownIntervals:function() {
                         if (isNewInterval) {
                             isNewInterval = false;
                             currentPhase = "REST";
                             currentTimeLeft = rest;
-                            currentInterval--;
-                            vm.set("phase", currentPhase);
-                            vm.set("interval", currentInterval); 
                             vm.set("timeLeft", currentTimeLeft);
+                            currentInterval--;
+                            vm.set("interval", currentInterval);
+                            vm.set("phase", currentPhase);
                         } 
                         
-                        if (currentTimeLeft - 1 > 0) {
-                            currentTimeLeft--;
+                        if (currentTimeLeft > 0) {
                             vm.set("timeLeft", currentTimeLeft);
-                        }
-                        else if (currentTimeLeft - 1 == 0) {
                             currentTimeLeft--;
+                        }
+                        else if (currentTimeLeft == 0) {
+                            navigator.notification.beep(2);
                             vm.set("timeLeft", currentTimeLeft);
                             if (currentPhase == "REST") {
                                 currentPhase = "WORK";
@@ -65,11 +94,11 @@ document.addEventListener("deviceready", function() {
                             }
                             else {
                                 if (currentInterval == 0) {
-                                    
                                     vm.set("setIsVisibleCurrentWorkoutDetails", false);
                                     vm.set("isVisible", false);
                                     vm.set("isInvisible", false);
                                     clearInterval(a.intervalsApi.timer);
+                                    navigator.notification.beep(3);
                                 }
                                 else {
                                     isNewInterval = true;
@@ -80,7 +109,7 @@ document.addEventListener("deviceready", function() {
                     
                 })
                 kendo.bind($("#play-intervals-view"), vm, kendo.mobile.ui);
-                a.intervalsApi.timer = setInterval(vm.countdownIntervals, 1000);
+                a.intervalsApi.prepareTimer = setInterval(vm.countdownPrepare, 1000);
             }
         };
     }(app));

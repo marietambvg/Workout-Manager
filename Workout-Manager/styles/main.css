@@ -14,10 +14,9 @@ h1, h2
 h4
 {
     text-align: left;
-    padding-left:10px;
+    padding-left: 10px;
     color: #35B3E6
 }
-
 
 h3
 {
@@ -28,17 +27,16 @@ h3
 .weldone-message
 {
     text-align: center;
-    color:#FF0084;
-    font-size:35px;
-    line-height:50px;
-    padding-top:50px;
+    color: #FF0084;
+    font-size: 35px;
+    line-height: 50px;
+    padding-top: 50px;
 }
 
 .intervals-result
 {
-    text-align: center;
-    color:#FF0084;
-    font-size:35px;
+    color: #FF0084;
+    font-size: 35px;
 }
 
 #result-time h2, #distance-result-time h2
@@ -49,19 +47,41 @@ h3
 td, th
 {
     text-align: center;
-    width: 100px;
 }
 
-.play-intervals-phase-table, .play-intervals-time-left-table
+.play-intervals-phase-table td h2, .play-intervals-time-left-table td h2
 {
-    text-align: center;
-    width:100%
+    text-align: left;
 }
 
-.play-intervals-phase-table, .play-intervals-time-left-table th,td
+.play-intervals-phase-table .intervals-result 
 {
-    text-align: center;
-    width:100%
+    text-align: right;
+    margin-bottom: 3px;
+}
+
+#time-left-holder-div
+{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#time-left-holder-div h1, h2
+{
+    text-align: center
+}
+#time-left-holder-div h1
+{
+    padding-bottom: 0px;
+    margin-bottom: 0px
+}
+#time-left-holder-div h2
+{
+    font-size: 180px;
+    font-weight: bold;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 #results, #distance-results 
@@ -126,15 +146,16 @@ input
 #network-button
 {
     margin-top: 20%;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 #home-clearstorage-button
 {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-.content .startButtonHolder{
-    margin-bottom:20px;
+.content .startButtonHolder
+{
+    margin-bottom: 20px;
 }
 
 #distance-run-button-start-button-holder
@@ -156,12 +177,14 @@ input
     margin-right: auto;
     width: 90%;
 }
-.track-distance-holder{
-    width:90%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:50%;
+.track-distance-holder
+{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50%;
 }
-.track-distance{
-    width:100%
+.track-distance
+{
+    width: 100%
 }
