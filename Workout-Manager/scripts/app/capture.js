@@ -3,24 +3,25 @@ var app = app || {};
 
 document.addEventListener("deviceready", function() {
     function id(element) {
-    return document.getElementById(element);
-}
+        return document.getElementById(element);
+    }
     
     (function(a) { 
         a.captureApi = {
     
-            run:function() {
-                //var that = this;
-                //id("capture-video").addEventListener("click", function() {
-                //    that._captureVideo.apply(that, arguments);
-                //});
-                //id("capture-audio").addEventListener("click", function() {
-                //    that._capureAudio.apply(that, arguments);
-                //});
-                //id("capture-image").addEventListener("click", function() {
-                //    that._captureImage.apply(that, arguments);
-                //});
+            accessFileSystem:function() {
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, a.captureApi.onFileSystemSuccess, a.captureApi.fail);
             },
+            onFileSystemSuccess:function (fileSystem) {
+                $("#result-message").html("Name: "+fileSystem.name+" Path: "+fileSystem.root.name);
+                console.log(fileSystem.name);
+                console.log(fileSystem.root.name);
+            },
+
+            fail:function(evt) {
+                console.log(evt.target.error.code);
+            },
+
             navigate:function() {
                 app.application.navigate("views/capture-view.html#capture-view");
             },
@@ -71,5 +72,6 @@ document.addEventListener("deviceready", function() {
                 }
             },
             
-        }}(app));
+        }
+    }(app));
 });

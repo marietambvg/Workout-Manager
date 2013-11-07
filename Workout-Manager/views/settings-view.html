@@ -5,19 +5,31 @@
      data-layout="main-layout" 
      data-show="app.connectionApi.init" 
      data-hide="app.connectionApi.close"
-    class="blackBackground"
+     class="blackBackground"
      >
-    
+
     <div>
         <div class="startButtonHolder">
-            <button class="touchSurface" id="network-button"><h3 data-bind="text: state">Internet Access Enabled</h3></button>
+            <button class="touchSurface" id="network-button">
+                <h3 data-bind="text: state">Internet Access Enabled</h3>
+            </button>
         </div>
         <div class="startButtonHolder" id="clearstorage-button" >
-            <button class="touchSurface" id="home-clearstorage-button" data-role="touch" data-tap="app.localStorage.clear"><h3>Clear History</h3></button>
+            <button class="touchSurface" id="home-clearstorage-button" data-role="touch" data-tap="app.localStorage.clear">
+                <h3>Clear History</h3>
+            </button>
         </div>
         <div class="startButtonHolder" id="go-to-capture-page-holder" >
-            <button class="touchSurface" id="go-to-capture-page-button" data-role="touch" data-tap="app.captureApi.navigate"><h3>Make some records</h3></button>
+            <button class="touchSurface" id="go-to-capture-page-button" data-role="touch" data-tap="app.captureApi.navigate">
+                <h3>Make some records</h3>
+            </button>
         </div>
+        <div class="startButtonHolder" id="capture-file-holder" >
+            <button class="touchSurface" id="capture-file-button" data-role="touch" data-tap="app.captureApi.accessFileSystem">
+                <h3>Pick File</h3>
+            </button>
+        </div>
+        <div id="result-message" ></div>
     </div>
 
 </div>
