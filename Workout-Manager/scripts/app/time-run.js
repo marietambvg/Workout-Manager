@@ -7,8 +7,10 @@ document.addEventListener("deviceready", function() {
     var minutes = 0;
     var seconds = 0;
     var runSpeed = 0;
-    var runTime = 0;
-    var timeLeft=0;
+    var runTime = "";
+    var timeLeft = 0;
+    var averageSpeed;
+    var totalDistance;
     
     function onStartSuccess(position) {
         startLat = position.coords.latitude;
@@ -27,9 +29,10 @@ document.addEventListener("deviceready", function() {
                 //ar data = [];
                 var startPosition = {"lat":startLat,"lon":startLon};
                 data.push(startPosition);
+                runTime = "";
                 
                 var vm = kendo.observable({
-                    distance:"0 km.",
+                    distance:"0 km",
                     isVisible:false,
                     distanceResult:0,
                     speed:0,
@@ -54,17 +57,17 @@ document.addEventListener("deviceready", function() {
                 minutes = parseInt(document.getElementById("variable-minutes-input").value) || 0;
                 hours = parseInt(document.getElementById("variable-hours-input").value) || 0;
                 time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
-                timeLeft=time/1000;
+                timeLeft = time / 1000;
                 
                 var vm = kendo.observable({
-                    distance:"0.00 km.",
+                    distance:"0.00 km",
                     isVisible:false,
                     distanceResult:0,
                     speed:0,
                     time:"",
                     isInvisible:false,
                     userDataVisibility:false,
-                    timeLeft:timeLeft+" sec",
+                    timeLeft:timeLeft + " sec",
                     
                     gpsDistance:function(lat1, lon1, lat2, lon2) {
                         // http://www.movable-type.co.uk/scripts/latlong.html
@@ -88,7 +91,7 @@ document.addEventListener("deviceready", function() {
                         data.push({"lat":currentLat,"lon":currentLon});
                         var runDistance = vm.calculateCurrentDistance(data);
                         totalRun = runDistance;
-                        vm.set("distance", runDistance + " km.");
+                        vm.set("distance", runDistance + " km");
                     },
                     
                     calculateCurrentDistance:function(data) {
@@ -118,10 +121,10 @@ document.addEventListener("deviceready", function() {
                 });
                 
                 a.timeRun.timer = setInterval(vm.getCurrentPosition, 5000);
-                a.timeRun.timerTimeLeft=setInterval(
-                    function(){
+                a.timeRun.timerTimeLeft = setInterval(
+                    function() {
                         timeLeft--;
-                        vm.set("timeLeft",timeLeft+" sec");
+                        vm.set("timeLeft", timeLeft + " sec");
                     }, 1000);
                 
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
@@ -133,47 +136,63 @@ document.addEventListener("deviceready", function() {
             
             beep: function(hours, minutes, seconds) {
                 navigator.notification.beep(1); 
-                var totalDistance = parseFloat(totalRun);
+                totalDistance = parseFloat(totalRun);
                 //calculate time;
                 var totalMinutes = (hours * 60 + minutes + seconds / 60);
                 if (totalMinutes != 0) {
-                    var averageSpeed = ((totalDistance * 60) / totalMinutes).toFixed(2) + " km/hour";
+                    averageSpeed = ((totalDistance * 60) / totalMinutes).toFixed(2) + " km/hour";
                 }
                 else {
                     averageSpeed = "0 km/hour"
                 }
-                
+                if (hours > 0) {
+                    runTime+=hours+" hours";
+                    if (minutes > 0) {
+                        runTime+=" "+minutes +" min" ;
+                        if (seconds > 0) {
+                            runTime+=", "+seconds +" sec" ;
+                        }
+                    }
+                }
+                else if (minutes > 0) {
+                    runTime+=minutes +" min" ;
+                        if (seconds > 0) {
+                            runTime+=" "+seconds +" sec" ;
+                        }
+                }
+                else if (seconds > 0) {
+                    runTime+=seconds+" sec";
+                }
                 var viewModel = kendo.observable({
                     isVisible:true,
                     distanceResult:0,
                     speed:0,
                     time:"",
                     isInvisible:true,
-                    currentRunTime:time/1000+" sec." 
-                    
+                    currentRunTime:runTime,
+                    isTimeRunShareButtonVisible:true,
                 });
                           
-                kendo.bind($("#results"), viewModel, kendo.mobile.ui); 
-                kendo.bind($("#current-distance"), viewModel, kendo.mobile.ui);
+                kendo.bind($("#time-run-view"), viewModel, kendo.mobile.ui);
                 viewModel.set("isInvisible", true);
                 viewModel.set("isVisible", true);
+                viewModel.set("isTimeRunShareButtonVisible", true);
                 viewModel.set("speed", averageSpeed);
-                viewModel.set("distanceResult", totalDistance + " km.");
+                viewModel.set("distanceResult", totalDistance + " km");
                 viewModel.set("time", "Time is over!");
-                viewModel.set("currentRunTime", time/1000+" sec.");
+                viewModel.set("currentRunTime", runTime);
                 clearInterval(a.timeRun.timer);
                 clearInterval(a.timeRun.timerTimeLeft);
+                
+                runSpeed = "No data!"
+                if (runTime != "") {
+                    runSpeed = (totalRun / (hours + minutes / 60 + seconds / 3600)).toFixed(2).toString();
+                }
             },
             
             save:function() {
-                runTime=(hours*60+minutes+seconds/60).toFixed(2).toString();
-                runSpeed="No data!"
-                if(runTime!=0){
-                    runSpeed=(totalRun/(hours+minutes/60+seconds/3600)).toFixed(2).toString();
-                }
-                
                 var currentRun = {
-                   "runname":new Date().getFullYear() + "-"+new Date().getMonth()+ "-" +new Date().getDate() +"/" +new Date().getHours()+ ":" + new Date().getMinutes(),
+                    "runname":new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate() + "/" + new Date().getHours() + ":" + new Date().getMinutes(),
                     "rundistance":totalRun,
                     "runtime":runTime,
                     "runspeed":runSpeed,
@@ -190,7 +209,23 @@ document.addEventListener("deviceready", function() {
                 else {
                     window.localStorage.setItem("History", JSON.stringify(localStorageData)); 
                 }
-               app.application.navigate("views/history-view.html#history-view");
+                app.application.navigate("views/history-view.html#history-view");
+            },
+            
+            share:function() {
+                var vm = kendo.observable({
+                    isVisible:true,
+                    isInvisible:true,
+                    isTimeRunShareButtonVisible:false,
+                    distanceResult:totalDistance+ " km",
+                    speed:averageSpeed,
+                    time:"Time is over",
+                    currentRunTime:runTime,
+                })
+               
+                kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
+                
+                app.facebookApp.login(totalRun, runTime, runSpeed);
                 
             }
         };

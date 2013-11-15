@@ -44,9 +44,9 @@ var app = app || {};
         console.log(currentRundata[0].lat);
         
         viewModel.set("runDate", runsData[runNumber].runname);
-        viewModel.set("runDistance", runsData[runNumber].rundistance);
+        viewModel.set("runDistance", runsData[runNumber].rundistance+" km");
         viewModel.set("runTime", runsData[runNumber].runtime);
-        viewModel.set("runSpeed", runsData[runNumber].runspeed);
+        viewModel.set("runSpeed", runsData[runNumber].runspeed+" km/hour");
         trackRoute(currentRundata);
     }
     

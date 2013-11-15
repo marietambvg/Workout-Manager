@@ -171,18 +171,33 @@ input
 }
 #save-current-workout
 {
-    margin-top: 55%;
-}
-#distance-save-current-workout
-{
-    margin-top: 45%;
+    margin-top: 25px;
 }
 
+#share-current-run
+{
+    margin-top: 25px;
+}
+
+#distance-save-current-run
+{
+    margin-top: 25px;
+}
+
+#distance-share-current-run
+{
+    margin-top: 25px;
+}
 .startButtonHolder
 {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
+}
+
+#capture-file-holder
+{
+    margin-top: 20px;
 }
 .track-distance-holder
 {
