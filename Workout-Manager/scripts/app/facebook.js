@@ -34,7 +34,7 @@ document.addEventListener("deviceready", function() {
     */
     jso_configure({
         "facebook": {
-            client_id: "537761576263898",
+            client_id: "218405028336646",
             redirect_uri: "http://www.facebook.com/connect/login_success.html",
             authorization: "https://www.facebook.com/dialog/oauth",
             presenttoken: "qs"
@@ -126,13 +126,13 @@ document.addEventListener("deviceready", function() {
                     jso_allowia: true,
                     dataType: 'json',
                     data: {
-                        message: "Just done my today run: distance - "+distance+" km, time - "+time+", "+speed+" km/hour",
+                        message: "Today run: Distance - "+distance+" km, Time - "+time+", Average speed - "+speed+" km/hour",
                         link: "http://apps.microsoft.com/windows/bg-bg/app/my-workout-timer/98f7fdf1-29f5-47d2-87a7-71e6eb17ece6#",
                         picture: "http://apps.microsoft.com/windows/bg-bg/app/my-workout-timer/98f7fdf1-29f5-47d2-87a7-71e6eb17ece6#"
                     },
                     success: function(data) {
                         outputlog("Post response (facebook):");
-                        outputlog(data);
+                        //outputlog(data);
                     },
                     error: function(e) {
                         outputlog(e);
@@ -150,8 +150,13 @@ document.addEventListener("deviceready", function() {
             if(resultsField==null){
                 resultsField=document.getElementById("time-run-facebook-result");
             }
+        if(m!="Post response (facebook):"){
             resultsField.innerText += typeof m === 'string' ? m : JSON.stringify(m);
             resultsField.innerText += '\n';
+        } else{
+            resultsField.innerText="Your run was sucessfully posted on your Facebook page!"
+        }
+            
         }
 
         function outputclear() {

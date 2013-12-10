@@ -4,7 +4,7 @@
      data-layout="main-layout"
      data-show="app.distanceRun.init"
      data-hide="app.distanceRun.close"
-    class="blackBackground"
+     class="blackBackground"
      >
 
     <div id="distance-run">
@@ -26,6 +26,9 @@
         </div>
 
         <div class="track-distance-holder" id="distance-current-distance" data-bind="invisible:isInvisible" invisible="true">
+            <div id="distance-current-result-time" class="current-results">
+                <h2 data-bind="text:status"></h2>
+            </div>
             <table class="track-distance">
                 <tr>
                     <td>Current run distance</td>
@@ -56,20 +59,20 @@
                     <td id="distance-time-result" data-bind="text:currentRunTime"></td>
                 </tr>
             </table>
-            
+
             <div class="startButtonHolder">
                 <button class="touchSurface" data-role="touch" data-tap="app.distanceRun.save" id="distance-save-current-run" >
                     <h3>Save current run</h3>
                 </button>
             </div>
-            <div class="startButtonHolder">
+            <div class="startButtonHolder" data-bind="visible:isDistanceRunShareButtonVisible" visible="true">
                 <button class="touchSurface" data-role="touch" data-tap="app.distanceRun.share" id="distance-share-current-run" >
                     <h3>Share current run</h3>
                 </button>
             </div>
-            <div id="distance-run-facebook-result">
-           
-        </div>
+            <div id="distance-run-facebook-result" data-role="scroller">
+
+            </div>
         </div>
     </div>
 </div>

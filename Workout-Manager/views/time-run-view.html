@@ -9,28 +9,64 @@
     <h1>Run for time</h1>
     <div id="time-run-user-data" data-bind="visible:userDataVisibility" class="view-content">
         <h2>Input time you want to run today </h2>
-        <div id="hours" class="inputBoxHolder">
-            <input id="variable-hours-input" type="number" placeholder="Enter hours"/>
+        <div id="variable-time-input" class="inputBoxHolder">
+            <table>
+                <tr>
+                    <td class="tdLabel">
+                        <label for="variable-hours-input">Hours:</label>
+                    </td>
+                    <td class="tdInput">
+                        <input id="variable-hours-input" type="number" placeholder="Enter hours"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">
+                        <label for="variable-minutes-input">Minutes:</label>
+                    </td>
+                    <td class="tdInput">
+                        <input id="variable-minutes-input" type="number" placeholder="Enter minutes"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel">
+                        <label for="variable-seconds-input">Seconds:</label>
+                    </td>
+                    <td class="tdInput">
+                        <input id="variable-seconds-input" type="number" placeholder="Enter seconds"/>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div id="minutes" class="inputBoxHolder">
-            <input id="variable-minutes-input"  type="number" placeholder="Enter minutes" />
+        <div id="additionalData">
+            <div id="timerun-enter-valid-data-message" data-bind="invisible:isInvisibleWrongDataMessage" invisible="true">
+                <span>You should enter positive integers in the fields.</span><br/><br/>
+                <span>Enter valid data!</span>
+            </div>
+
+            <div class="startButtonHolder" id="time-run-button-start-button-holder" >
+                <button class="touchSurface" data-role="touch" data-tap="app.timeRun.run">
+                    <h3>START </h3>
+                </button>
+            </div>
         </div>
-        <div id="seconds" class="inputBoxHolder">
-            <input id="variable-seconds-input"  type="number" placeholder="Enter seconds" />
-        </div>
-        <div class="startButtonHolder" id="time-run-button-start-button-holder">
-            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.run">
-                <h3>START </h3>
-            </button>
-        </div>
+        
     </div>
 
     <div class="track-distance-holder" id="current-distance" data-bind="invisible:isInvisible" invisible="true">
+        <div id="current-result-time" class="current-results">
+            <h2 data-bind="text:timeStatus"></h2>
+        </div>
         <table class="track-distance">
             <tr>
                 <td>Current run distance</td>
                 <td data-bind="text:distance"></td>
             </tr>
+            
+            <tr>
+                <td>Current speed</td>
+                <td data-bind="text:currentSpeed"></td>
+            </tr>
+            
             <tr>
                 <td>Time left</td>
                 <td data-bind="text:timeLeft"></td>
@@ -40,7 +76,7 @@
 
     <div id="results" data-bind="visible:isVisible" visible="false">
         <div id="result-time">
-            <h2 data-bind="text:time"></h2>
+            <h2 data-bind="text:timeStatus"></h2>
         </div>
         <table id="table-results">
             <tr>
@@ -56,19 +92,20 @@
                 <td id="distance-time-result" data-bind="text:currentRunTime"></td>
             </tr>
         </table>
-        
+
         <div class="startButtonHolder">
             <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-run">
                 <h3>Save current run</h3>
             </button>
         </div>
+
         <div class="startButtonHolder" id="share-current-run" data-bind="visible:isTimeRunShareButtonVisible" visible="true">
             <button class="touchSurface" data-role="touch" data-tap="app.timeRun.share" >
                 <h3>Share current run</h3>
             </button>
         </div>
+
         <div id="time-run-facebook-result">
-           
         </div>
     </div>
 

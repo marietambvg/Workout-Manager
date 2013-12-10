@@ -5,10 +5,12 @@ document.addEventListener("deviceready", function() {
     var distanceTotalRun = 0;
     var distanceData = [];
     var startTime;
-    var currentRunTime=0;
+    var currentRunTime = 0;
     var endTime;
-    var finalTime="";
+    var finalTime = "";
     var distanceRunSpeed;
+    var distanceRunAverageSpeed;
+    var distanceRunTotalDistance;
     
     function onDistanceStartSuccess(position) {
         startLat = position.coords.latitude;
@@ -33,7 +35,7 @@ document.addEventListener("deviceready", function() {
                     isVisible:false,
                     distanceResult:0,
                     speed:0,
-                    status:"",
+                    status:"Your current data:",
                     isInvisible:true,
                     userDataVisibility:true,
                    
@@ -44,9 +46,8 @@ document.addEventListener("deviceready", function() {
                 vm.set("isVisible", false);
                 vm.set("distanceResult", "0");
                 vm.set("speed", "0");
-                vm.set("status", "");
+                vm.set("status", "Your current data:");
                 vm.set("isInvisible", true);
-               
             },
             
             close: function() { 
@@ -59,9 +60,10 @@ document.addEventListener("deviceready", function() {
                     distanceResult:0,
                     speed:0,
                     time:"",
+                    status:"Your current data:",
                     isInvisible:false,
                     userDataVisibility:false,
-                    currentRunTime:currentRunTime+" sec",
+                    currentRunTime:currentRunTime + " sec",
                     
                     getCurrentPosition:function() {
                         navigator.geolocation.getCurrentPosition(vm.onSuccess, vm.onError);
@@ -122,12 +124,10 @@ document.addEventListener("deviceready", function() {
                 startTime = Date.now();
                 distancePlanRun = (parseInt($("#variable-km-input").val()) || 0) + (parseInt($("#variable-metres-input").val()) || 0) / 1000;
                 a.distanceRun.timer = setInterval(vm.getCurrentPosition, 5000);
-                a.distanceRun.timerTimeCounter = setInterval(function(){
+                a.distanceRun.timerTimeCounter = setInterval(function() {
                     currentRunTime++;
-                    vm.set("currentRunTime",currentRunTime+" sec")
+                    vm.set("currentRunTime", currentRunTime + " sec")
                 }, 1000);
-                
-               
             },
             
             beep: function() {
@@ -135,69 +135,65 @@ document.addEventListener("deviceready", function() {
                 clearInterval(a.distanceRun.timer);
                 clearInterval(a.distanceRun.timerTimeCounter);
                 
-                var totalDistance = parseFloat(distanceTotalRun);
+                distanceRunTotalDistance = parseFloat(distanceTotalRun);
                 //calculate time;
                 endTime = Date.now();
                 var totalMinutes = ((endTime - startTime) / 1000) / 60;
                 if (totalMinutes != 0) {
-                    var averageSpeed = ((totalDistance * 60) / totalMinutes).toFixed(2) + " km/hour";
+                    distanceRunAverageSpeed = ((distanceRunTotalDistance * 60) / totalMinutes).toFixed(2) + " km/hour";
                 }
                 else {
-                    averageSpeed = "0 km/hour"
+                    distanceRunAverageSpeed = "0 km/hour"
                 }
-                
                
-                //distanceRunTime=((endTime-startTime)/(1000*60)).toFixed(2);
-                var distanceTimeRunInSeconds=((endTime-startTime)/1000).toFixed(0);
-                var seconds=distanceTimeRunInSeconds%60;
-                var minutesFull=(distanceTimeRunInSeconds-seconds)/60;
-                var minutes=minutesFull%60;
-                var hours=(minutesFull-minutes)/60;
+                var distanceTimeRunInSeconds = ((endTime - startTime) / 1000).toFixed(0);
+                var seconds = distanceTimeRunInSeconds % 60;
+                var minutesFull = (distanceTimeRunInSeconds - seconds) / 60;
+                var minutes = minutesFull % 60;
+                var hours = (minutesFull - minutes) / 60;
                 
                 if (hours > 0) {
-                    finalTime+=hours+" hours";
+                    finalTime+=hours + " hours";
                     if (minutes > 0) {
-                        finalTime+=" "+minutes +" min" ;
+                        finalTime+=" " + minutes + " min" ;
                         if (seconds > 0) {
-                            finalTime+=", "+seconds +" sec" ;
+                            finalTime+=", " + seconds + " sec" ;
                         }
                     }
                 }
                 else if (minutes > 0) {
-                    finalTime+=minutes +" min" ;
-                        if (seconds > 0) {
-                            finalTime+=" "+seconds +" sec" ;
-                        }
+                    finalTime+=minutes + " min" ;
+                    if (seconds > 0) {
+                        finalTime+=" " + seconds + " sec" ;
+                    }
                 }
                 else if (seconds > 0) {
-                    finalTime+=seconds+" sec";
+                    finalTime+=seconds + " sec";
                 }
                 
                 var viewModel = kendo.observable({
                     isVisible:true,
                     distanceResult:0,
                     speed:0,
-                    status:"",
+                    status:"You run planned distance!",
                     isInvisible:true,
                     currentRunTime:finalTime,
+                    isDistanceRunShareButtonVisible:true
                     
                 });
-                kendo.bind($("#distance-results"), viewModel, kendo.mobile.ui); 
-                kendo.bind($("#distance-current-distance"), viewModel, kendo.mobile.ui);
+                kendo.bind($("#distance-run"), viewModel, kendo.mobile.ui);
                 viewModel.set("isInvisible", true);
                 viewModel.set("isVisible", true);
-                viewModel.set("speed", averageSpeed);
-                viewModel.set("distanceResult", totalDistance + " km");
+                viewModel.set("speed", distanceRunAverageSpeed);
+                viewModel.set("distanceResult", distanceRunTotalDistance + " km");
                 viewModel.set("status", "You run planned distance!");
                 viewModel.set("currentTimeRun", finalTime);
-                distanceRunSpeed=(distanceTotalRun/((endTime-startTime)/(1000*3600))).toFixed(2);
-                
+                distanceRunSpeed = (distanceTotalRun / ((endTime - startTime) / (1000 * 3600))).toFixed(2);
             },
             
             save:function() {
-                
                 var currentRun = {
-                    "runname":new Date().getFullYear() + "-"+new Date().getMonth()+ "-" +new Date().getDate() +"/" +new Date().getHours()+ ":" + new Date().getMinutes(),
+                    "runname":new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate() + "/" + new Date().getHours() + ":" + new Date().getMinutes(),
                     "rundistance":distanceTotalRun.toFixed(2),
                     "runtime":finalTime,
                     "runspeed":distanceRunSpeed,
@@ -217,7 +213,19 @@ document.addEventListener("deviceready", function() {
                 app.application.navigate("views/history-view.html#history-view");
             },
             
-            share:function(){
+            share:function() {
+                var vm = kendo.observable({
+                    isVisible:true,
+                    distanceResult:distanceRunTotalDistance + " km",
+                    speed:distanceRunAverageSpeed,
+                    status:"You run planned distance!",
+                    isInvisible:true,
+                    currentRunTime:finalTime,
+                    isDistanceRunShareButtonVisible:false
+                })
+               
+                kendo.bind($("#distance-run-view"), vm, kendo.mobile.ui);
+                
                 app.facebookApp.login(distanceTotalRun, finalTime, distanceRunSpeed);
             }
             
