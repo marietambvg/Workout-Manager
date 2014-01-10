@@ -92,19 +92,19 @@
                 <td id="distance-time-result" data-bind="text:currentRunTime"></td>
             </tr>
         </table>
-
-        <div class="startButtonHolder">
-            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-run">
-                <h3>Save current run</h3>
-            </button>
-        </div>
-
+        
         <div class="startButtonHolder" id="share-current-run" data-bind="visible:isTimeRunShareButtonVisible" visible="true">
             <button class="touchSurface" data-role="touch" data-tap="app.timeRun.share" >
                 <h3>Share current run</h3>
             </button>
         </div>
 
+        <div class="startButtonHolder">
+            <button class="touchSurface" data-role="touch" data-tap="app.timeRun.save" id="save-current-run">
+                <h3>Save current run</h3>
+            </button>
+        </div>
+        
         <div id="time-run-facebook-result">
         </div>
     </div>

@@ -3,7 +3,7 @@
      data-id="categories-view"
      data-layout="main-layout" 
      data-show="app.runs.init"
-    class="blackBackground">
+     class="blackBackground">
     <div id="runs-holder">
         <h1>Your recent runs </h1>
         <select id="runs-list" 
@@ -18,25 +18,24 @@
         <div id="selected-run-info" data-bind="visible:isVisibleRunInfo">
             <div id="route-holder" style="margin-top:20px;width:100%;height:200px">
             </div>
-            <div>
-                <h4>
-                    <span>Run date: </span><span data-bind="text:runDate"></span>
-                </h4>
-            </div>
-            <div>
-                <h4>
-                    <span>Run distance: </span><span data-bind="text:runDistance"></span>
-                </h4>
-            </div>
-            <div>
-                <h4>
-                    <span>Run time: </span><span data-bind="text:runTime"></span>
-                </h4>
-            </div>
-            <div>
-                <h4>
-                    <span>Run average speed: </span><span data-bind="text:runSpeed"></span>
-                </h4>
+            <div class="run-time-history-result">
+                <br/>
+                <span>Run date: </span><span data-bind="text:runDate"></span><br/>
+                <span>Run distance: </span><span data-bind="text:runDistance"></span><br/>
+                <span>Run time: </span><span data-bind="text:runTime"></span><br/>
+                <span>Аverage speed: </span><span data-bind="text:runSpeed"></span>
+                <div id="manage-current-run">
+                    <div class="startButtonHolder" id="history-share-current-run">
+                        <button class="touchSurface" data-role="touch" data-tap="app.runs.deleteCurrentRun" >
+                            <h3>Share current run</h3>
+                        </button>
+                    </div>
+                    <div class="startButtonHolder" id="delete-current-run">
+                        <button class="touchSurface" data-role="touch" data-tap="app.runs.deleteCurrentRun" >
+                            <h3>Delete current run</h3>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

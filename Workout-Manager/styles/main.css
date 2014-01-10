@@ -18,8 +18,7 @@ h1, h2
     color: #35B3E6
 }
 
-h4
-{
+div .run-time-history-result{
     text-align: left;
     padding-left: 10px;
     color: #35B3E6
@@ -174,6 +173,8 @@ input
     background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
 }
+
+
 #additionalData{
     height:150px;
     position:relative;
@@ -220,6 +221,20 @@ input
 #share-current-run
 {
     margin-top: 25px;
+}
+
+#manage-current-run{
+   
+}
+
+#delete-current-run{
+    width:150px;
+     display:inline-block;
+    }
+
+#history-share-current-run{
+    width:150px;
+    display:inline-block;
 }
 
 #distance-save-current-run

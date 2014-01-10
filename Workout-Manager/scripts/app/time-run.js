@@ -302,6 +302,11 @@ document.addEventListener("deviceready", function() {
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
                 
                 app.facebookApp.login(totalRun, runTime, runSpeed);
+            },
+            
+            saveAndShare:function(){
+                this.save();
+                this.share();
             }
         };
     }(app));
