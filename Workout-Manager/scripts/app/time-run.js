@@ -6,6 +6,9 @@ document.addEventListener("deviceready", function() {
     var hours = 0;
     var minutes = 0;
     var seconds = 0;
+    var secondsValue;
+    var minutesValue;
+    var hoursValue;
     var runSpeed = 0;
     var runTime = "";
     var timeLeft = 0;
@@ -64,8 +67,7 @@ document.addEventListener("deviceready", function() {
             },
             
             run: function(e) {
-                
-                
+                                
                 var startPosition = {"lat":startLat,"lon":startLon};
                 data=[];
                 data.push(startPosition);
@@ -96,7 +98,7 @@ document.addEventListener("deviceready", function() {
                 minutes = parseInt(minutesValue);
                 hours = parseInt(hoursValue);
                 if ((isNaN(seconds) || isNaN(minutes) || isNaN(hours) || seconds < 0 || minutes < 0 || hours < 0) ||
-                    (secondsValue == "" && minutesValue == "" && hoursValue == "")) {
+                    (secondsValue == 0 && minutesValue == 0 && hoursValue == 0)) {
                     var vm = kendo.observable({
                         distance:"0 km",
                         isVisible:false,
@@ -117,15 +119,7 @@ document.addEventListener("deviceready", function() {
                     vm.set("isInvisibleWrongDataMessage", false);
                 }
                 else {
-                    if (secondsValue == "") {
-                        secondsValue = 0;
-                    }
-                    if (minutesValue == "") {
-                        minutesValue = 0;
-                    }
-                    if (hoursValue == "") {
-                        hoursValue = 0;
-                    }
+                    
                     time = ((hours * 60) + minutes) * 60000 + seconds * 1000; //miliseconds
                     runTimeInHours = ((time / 1000) / 60) / 60;
                     timeLeft = time / 1000;
@@ -267,8 +261,28 @@ document.addEventListener("deviceready", function() {
             },
             
             save:function() {
+                var timerunFormatedMonth=new Date().getMonth()+1;
+                if(timerunFormatedMonth<10){
+                    timerunFormatedMonth="0"+timerunFormatedMonth;
+                }
+                
+                var timerunFormatedDate=new Date().getDate();
+                if(timerunFormatedDate<10){
+                    timerunFormatedDate="0"+timerunFormatedDate;
+                }
+                
+                var timerunFormatedHours=new Date().getHours();
+                if(timerunFormatedHours<10){
+                    timerunFormatedHours="0"+timerunFormatedHours;
+                }
+                
+                var timerunFormatedMinutes=new Date().getMinutes();
+                if(timerunFormatedMinutes<10){
+                    timerunFormatedMinutes="0"+timerunFormatedMinutes;
+                }
+                
                 var currentRun = {
-                    "runname":new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate() + "/" + new Date().getHours() + ":" + new Date().getMinutes(),
+                    "runname":new Date().getFullYear() + "-" + timerunFormatedMonth + "-" + timerunFormatedDate + "/" + timerunFormatedHours+ ":" +timerunFormatedMinutes ,
                     "rundistance":totalRun,
                     "runtime":runTime,
                     "runspeed":runSpeed,
@@ -301,13 +315,10 @@ document.addEventListener("deviceready", function() {
                
                 kendo.bind($("#time-run-view"), vm, kendo.mobile.ui);
                 
-                app.facebookApp.login(totalRun, runTime, runSpeed);
-            },
-            
-            saveAndShare:function(){
-                this.save();
-                this.share();
+                app.facebookApp.login(totalRun, runTime, runSpeed,"timeRun","Today");
             }
+            
+            
         };
     }(app));
 });

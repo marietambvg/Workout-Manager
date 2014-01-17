@@ -175,11 +175,11 @@ input
 }
 
 
-#additionalData{
+#additionalData, #additionalDistanceRunData{
     height:150px;
     position:relative;
 }
-#timerun-enter-valid-data-message{
+#timerun-enter-valid-data-message, #distancerun-enter-valid-data-message{
     position:absolute;
     top:5px;
     height:50px;
@@ -192,6 +192,12 @@ input
 {
     position:absolute;
     top:85px;
+    left:15px;
+}
+
+#distance-run-button-start-button-holder{
+    position:absolute;
+    
     left:15px;
 }
 #network-button
@@ -211,7 +217,7 @@ input
 
 #distance-run-button-start-button-holder
 {
-    margin-top: 59%;
+    margin-top: 150px;
 }
 #save-current-workout
 {
@@ -221,6 +227,7 @@ input
 #share-current-run
 {
     margin-top: 25px;
+    margin-bottom:25px;
 }
 
 #manage-current-run{

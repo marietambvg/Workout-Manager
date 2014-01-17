@@ -26,6 +26,7 @@ var app = app || {};
                 viewModel.set("isVisible", false); 
                 viewModel.set("isInvisible", false);
                 viewModel.set("isVisibleRunInfo", false);
+                viewModel.set("isVisibleShareButton", true);
             }
             else {
                 viewModel.set("isVisible", true);
@@ -49,7 +50,13 @@ var app = app || {};
             viewModel.set("isVisibleRunInfo", false);
         }
     }
-    
+    function shareCurrentRun(){
+        var totalRun=runsData[runNumber].rundistance;
+        var runTime=runsData[runNumber].runtime;
+        var runSpeed=runsData[runNumber].runspeed;
+        var day=runsData[runNumber].runname;
+        app.facebookApp.login(totalRun, runTime, runSpeed,"historyShareRun",day);
+    }
     function onRunChanged(e) {
         viewModel.set("isVisibleRunInfo", true);
         var returnedValue;
@@ -107,6 +114,7 @@ var app = app || {};
     }
     a.runs = {
         init:init,
-        deleteCurrentRun:deleteCurrentRun
+        deleteCurrentRun:deleteCurrentRun,
+        shareCurrentRun:shareCurrentRun
     };
 }(app));

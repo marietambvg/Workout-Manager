@@ -25,8 +25,8 @@
                 <span>Run time: </span><span data-bind="text:runTime"></span><br/>
                 <span>Аverage speed: </span><span data-bind="text:runSpeed"></span>
                 <div id="manage-current-run">
-                    <div class="startButtonHolder" id="history-share-current-run">
-                        <button class="touchSurface" data-role="touch" data-tap="app.runs.deleteCurrentRun" >
+                    <div class="startButtonHolder" id="history-share-current-run" data-bind="visible:isVisibleShareButton">
+                        <button class="touchSurface" data-role="touch" data-tap="app.runs.shareCurrentRun" >
                             <h3>Share current run</h3>
                         </button>
                     </div>
@@ -36,6 +36,7 @@
                         </button>
                     </div>
                 </div>
+                <div id="history-facebook-result"></div>
             </div>
         </div>
     </div>

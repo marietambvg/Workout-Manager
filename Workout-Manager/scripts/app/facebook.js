@@ -46,12 +46,15 @@ document.addEventListener("deviceready", function() {
     
     (function(a) { 
         a.facebookApp = {
-            login:function (distance, time, speed) {
+            
+            
+            login:function (distance, time, speed, view, day) {
                 // For debugging purposes you can wipe existing cached tokens...
                 jso_ensureTokens({
                     "facebook": ["read_stream", "publish_stream"]
                 });
-                a.facebookApp.post(distance, time, speed);
+                initFacebookResults(view);
+                a.facebookApp.post(distance, time, speed, day);
             },
             
             clearLog: function () {
@@ -115,8 +118,10 @@ document.addEventListener("deviceready", function() {
                 });
             },
 
-            post:function(distance, time, speed) {
+            post:function(distance, time, speed, day) {
                 outputlog("Post to wall...");
+                
+                
                 // Perform the protected OAuth calls.
                 $.oajax({
                     type: "POST",
@@ -126,7 +131,7 @@ document.addEventListener("deviceready", function() {
                     jso_allowia: true,
                     dataType: 'json',
                     data: {
-                        message: "Today run: Distance - "+distance+" km, Time - "+time+", Average speed - "+speed+" km/hour",
+                        message: day+" run: Distance - "+distance+" km, Time - "+time+", Average speed - "+speed+" km/hour",
                         link: "http://apps.microsoft.com/windows/bg-bg/app/my-workout-timer/98f7fdf1-29f5-47d2-87a7-71e6eb17ece6#",
                         picture: "http://apps.microsoft.com/windows/bg-bg/app/my-workout-timer/98f7fdf1-29f5-47d2-87a7-71e6eb17ece6#"
                     },
@@ -144,17 +149,31 @@ document.addEventListener("deviceready", function() {
         
         
     }(app));
+    var resultsField;
+    
+    function initFacebookResults(view){
+        if (view=="distanceRun"){
+            resultsField = document.getElementById("distance-run-facebook-result");
+        } else if (view=="timeRun"){
+            resultsField=document.getElementById("time-run-facebook-result");
+        } else if (view=="historyShareRun"){
+            resultsField=document.getElementById("history-facebook-result");
+        }
+        resultsField.innerText="";
+    }
     
     function outputlog(m) {
-            var resultsField = document.getElementById("distance-run-facebook-result");
-            if(resultsField==null){
-                resultsField=document.getElementById("time-run-facebook-result");
-            }
+            //var resultsField = document.getElementById("distance-run-facebook-result");
+            //if(resultsField==null){
+            //    resultsField=document.getElementById("time-run-facebook-result");
+            //}
         if(m!="Post response (facebook):"){
             resultsField.innerText += typeof m === 'string' ? m : JSON.stringify(m);
             resultsField.innerText += '\n';
         } else{
+            //alert("Your run was sucessfully posted on your Facebook page!");
             resultsField.innerText="Your run was sucessfully posted on your Facebook page!"
+            setTimeout(function(){resultsField.innerText = ""},5000)
         }
             
         }

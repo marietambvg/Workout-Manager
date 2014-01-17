@@ -12,16 +12,37 @@
 
         <div id="distance-run-user-data" data-bind="visible:userDataVisibility">
             <h2>Input distance you want to run today </h2>
-            <div id="km" class="inputBoxHolder">
-                <input id="variable-km-input"  type="number" placeholder="Enter kilometres"/>
+            <div id="variable-distance-input" class="inputBoxHolder">
+                <table>
+                    <tr>
+                        <td class="tdLabel">
+                            <label for="variable-km-input">Kilometres:</label>
+                        </td>
+                        <td class="tdInput">
+                            <input id="variable-km-input" type="number" placeholder="Enter kilometres"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLabel">
+                            <label for="variable-metres-input">Metres:</label>
+                        </td>
+                        <td class="tdInput">
+                            <input id="variable-metres-input" type="number" placeholder="Enter metres"/>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div id="metrеs" class="inputBoxHolder">
-                <input id="variable-metres-input" type="number" placeholder="Enter metres" />
-            </div>
-            <div class="startButtonHolder" id="distance-run-button-start-button-holder">
-                <button class="touchSurface" id="distance-run-start-button" data-role="touch" data-tap="app.distanceRun.run">
-                    <h3>START</h3>
-                </button>
+
+            <div id="additionalDistanceRunData">
+                <div id="distancerun-enter-valid-data-message" data-bind="invisible:isInvisibleWrongDataMessageDistanceRun" invisible="true">
+                    <span>You should enter positive integers in the fields.</span><br/><br/>
+                    <span>Enter valid data!</span>
+                </div>
+                <div class="startButtonHolder" id="distance-run-button-start-button-holder">
+                    <button class="touchSurface" data-role="touch" data-tap="app.distanceRun.run">
+                        <h3>START</h3>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -33,6 +54,10 @@
                 <tr>
                     <td>Current run distance</td>
                     <td data-bind="text:distance"></td>
+                </tr>
+                <tr>
+                    <td>Current speed</td>
+                    <td data-bind="text:currentSpeed"></td>
                 </tr>
                 <tr>
                     <td>Current run time</td>
