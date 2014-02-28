@@ -41,12 +41,12 @@
                 </td>
             </tr>
         </table>
-        <div class="startButtonHolder">
+        <div class="startButtonHolder" id="start-intervals-workout-button" >
             <button class="touchSurface"  
                     id="start-workout-button" 
                     data-role="touch" 
                     data-tap="app.intervalsApi.startWorkout">
-                <h3>Start workout!</h3>
+                <h3>Start workout</h3>
             </button>
         </div>
     </div>
@@ -78,7 +78,14 @@
             <h1>Time left</h1>
 
             <h2 class="intervals-result" data-bind="text:timeLeft"></h2>
-        
+        </div>
+        <div class="startButtonHolder" id="pause-intervals-workout-button">
+            <button class="touchSurface"  
+                    id="pause-workout-button" 
+                    data-role="touch" 
+                    data-tap="app.intervalsApi.pauseWorkout">
+                <h3>Pause workout</h3>
+            </button>
         </div>
     </div>
 

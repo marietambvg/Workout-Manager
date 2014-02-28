@@ -79,6 +79,7 @@ td, th
 #time-left-holder-div
 {
     width: 75%;
+    height:207px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -86,14 +87,16 @@ td, th
 #time-left-holder-div h1, h2
 {
     text-align: center
+    
 }
 #time-left-holder-div h1
 {
     padding-bottom: 0px;
+    margin-bottom:0px;
 }
 #time-left-holder-div h2
 {
-    font-size: 180px;
+    font-size: 150px;
     font-weight: bold;
     margin-top: 0px;
     padding-top: 0px;
@@ -133,7 +136,7 @@ td, th
 
 
 
-.tdLabel{
+.tdLabel, .inputBoxHolderIntervals label{
     font-size:15px;
     color: #35B3E6;
     }
@@ -157,14 +160,23 @@ input
 
 .inputBoxHolderIntervals
 {
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 5px;
     width:100%
 }
 
+.inputBoxHolderIntervals label{
+    display:inline-block;
+    width:100px;
+    margin-left:5px;
+    }
+
 .inputBoxHolderIntervals input{
-    width:90%
+    width:60%;
+    margin-left:0px;
+}
+
+#start-intervals-workout-button{
+    margin-top:60px;
 }
 
 .touchSurface

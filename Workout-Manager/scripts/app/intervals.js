@@ -72,6 +72,10 @@ document.addEventListener("deviceready", function() {
                 clearInterval(a.intervalsApi.timer);
             },
             
+            pauseWorkout:function(){
+                alert("The workout is paused. Press O.K. when you are ready to continue.")
+            },
+            
             navigateToPlayIntervalsView: function() {
                 a.intervalsApi.getCurrentValues();
                 if(isInputDataValid==true){
