@@ -2,12 +2,36 @@
      data-id="countdown-timer-view" 
      data-role="view"  
      data-layout="main-layout"
-     data-show="app.countdown.init"
-     data-hide="app.countdown.close"
+     data-show="app.countdownApi.init"
+     data-hide="app.countdownApi.close"
     class="blackBackground"
      >
 
     <div id="countdown-timer">
         <h1>Countdown Timer </h1>
+        <div id="create-countdown-timer-user-data"  class="view-content">
+            <h2>Input time you want to countdown </h2>
+            <div id="countdown-hours" class="inputBoxHolderIntervals">
+                <label for="variable-countdown-hours-input">Hours:</label>
+                <input id="variable-countdown-hours-input" type="number" placeholder="Hours"/>
+            </div>
+            <div id="countdown-minutes" class="inputBoxHolderIntervals">
+                 <label for="variable-countdown-minutes-input">Minutes:</label>
+                <input id="variable-countdown-minutes-input" type="number" placeholder="Minutes"/>
+            </div>
+            <div id="countdown-seconds" class="inputBoxHolderIntervals">
+                 <label for="variable-countdown-seconds-input">Seconds:</label>
+                <input  id="variable-countdown-seconds-input"  type="number" placeholder="Seconds"/>
+            </div>
+            
+        </div>
+    </div>
+    <div class="startButtonHolder" id="start-countdown-button">
+        <button class="touchSurface"  
+                id="start-standard-tabata-button" 
+                data-role="touch" 
+                data-tap="app.countdownApi.getCountdownInputData">
+            <h3>Start countdown</h3>
+        </button>
     </div>
 </div>

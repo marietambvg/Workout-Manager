@@ -179,6 +179,14 @@ input
     margin-top:60px;
 }
 
+/* start countdown-timer-view.html styles*/
+
+#start-countdown-button{
+    margin-top:90px;
+}
+
+/* end countdown-timer-view.html styles*/
+
 .touchSurface
 {
     width: 100%;
