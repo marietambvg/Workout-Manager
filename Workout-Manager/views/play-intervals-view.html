@@ -3,9 +3,8 @@
      data-id="play-intervals-view" 
      data-layout="main-layout" 
      data-show="app.intervalsApi.initIntervals"
-    class="blackBackground"
-    
-     >
+     data-hide="app.intervalsApi.close"
+     class="blackBackground">
     <div visible="true" data-bind="visible:IsVisibleCurrentWorkoutDetails">
         <h1>Current workout details</h1>
         <table class="play-intervals-phase-table">
@@ -54,7 +53,7 @@
     <div visible="false" data-bind="style: {backgroundColor: backgroundcolor},visible:isVisible">
         <h1>Workout Data</h1>
 
-        <div id="status-holder-div" id="track-interval-time" >
+        <div id="status-holder-div" >
             <table class="play-intervals-phase-table">
                 <tr>
                     <td>
@@ -88,7 +87,7 @@
             <h3 class="weldone-message">You finished your workout!</h3>
         </div>
         <div>
-            <h3 class="weldone-message">Welldone!</h3>
+            <h3 class="weldone-message">Well done!</h3>
         </div>
     </div>
 

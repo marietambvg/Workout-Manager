@@ -53,7 +53,7 @@ h3
 .intervals-result
 {
     color: #FF0084;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 #result-time h2, #distance-result-time h2
@@ -74,7 +74,6 @@ td, th
 .play-intervals-phase-table .intervals-result 
 {
     text-align: right;
-    margin-bottom: 3px;
 }
 
 #time-left-holder-div
@@ -91,7 +90,6 @@ td, th
 #time-left-holder-div h1
 {
     padding-bottom: 0px;
-    margin-bottom: 0px
 }
 #time-left-holder-div h2
 {
@@ -133,13 +131,7 @@ td, th
     font-size: 15px;
 }
 
-.inputBoxHolder
-{
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    margin-top: 5px;
-}
+
 
 .tdLabel{
     font-size:15px;
@@ -154,6 +146,25 @@ input
     font-size:15px;
     font-weight:bold;
     display:inline;
+}
+.inputBoxHolder
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 5px;
+}
+
+.inputBoxHolderIntervals
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    width:100%
+}
+
+.inputBoxHolderIntervals input{
+    width:90%
 }
 
 .touchSurface
@@ -213,6 +224,11 @@ input
 .content .startButtonHolder
 {
     margin-bottom: 20px;
+}
+
+#interval-timer-view .startButtonHolder
+{
+    margin-top: 20px;
 }
 
 #distance-run-button-start-button-holder
