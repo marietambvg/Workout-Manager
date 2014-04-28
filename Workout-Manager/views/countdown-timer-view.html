@@ -42,10 +42,6 @@
                     <td class="right-aligned" data-bind="text:countdownSeconds"></td>
                 </tr>
             </table>
-            
-            <div visible="false" data-bind="visible:isVisibleFinishCountdownStatus" id="finish-countdown-status-data">
-                <h2>Time finished!</h2>
-            </div>
         </div>
 
         <div class="startButtonHolder" id="start-countdown-button" visible="true" data-bind="visible:isVisibleCountdownStartButton">
@@ -73,6 +69,10 @@
                     data-tap="app.countdownApi.continueCountdown">
                 <h3>Continue countdown</h3>
             </button>
+        </div>
+        
+        <div visible="false" data-bind="visible:isVisibleFinishCountdownStatus" id="finish-countdown-status-data">
+            <h2>Time finished!</h2>
         </div>
 
         <div class="startButtonHolder" id="reset-countdown-buttonholder" visible="false" data-bind="visible:isVisibleCountdownResetButton">

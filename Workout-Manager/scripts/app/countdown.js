@@ -79,6 +79,7 @@ document.addEventListener("deviceready", function() {
                 vmCountdown.set("isVisibleCountdownStartButton", false);
                 vmCountdown.set("isVisibleCountdownContinueButton", false);
                 vmCountdown.set("isVisibleCountdownPauseButton", true);
+                vmCountdown.set("isVisibleCountdownResetButton", true);
             
                 if (countdownSecondsCurrentValue > 0) {
                     countdownSecondsCurrentValue--;
@@ -108,11 +109,13 @@ document.addEventListener("deviceready", function() {
                 clearInterval(a.countdownApi.countdownTimer);
                 vmCountdown.set("isVisibleCountdownContinueButton", true);
                 vmCountdown.set("isVisibleCountdownPauseButton", false);
+                vmCountdown.set("isVisibleCountdownResetButton", true);
             },
             
             continueCountdown:function() {
                 vmCountdown.set("isVisibleCountdownContinueButton", false);
                 vmCountdown.set("isVisibleCountdownPauseButton", true);
+                vmCountdown.set("isVisibleCountdownResetButton", true);
                 a.countdownApi.countdownTimer = setInterval(a.countdownApi.startCountdown, 1000);
             },
             

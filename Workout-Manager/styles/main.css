@@ -135,11 +135,19 @@ td, th
 }
 
 #countdown-current-data, #stopwatch-current-data{
-    height:200px; 
+    height:230px; 
 }
 
-#countdown-status-data{
-    height:350px;
+/*#countdown-status-data{
+    height:290px;
+}*/
+
+#finish-countdown-status-data{
+        margin-bottom:25px;
+}
+
+#reset-countdown-buttonholder{
+    margin-top:25px;
 }
 
 #results td, #distance-results td
