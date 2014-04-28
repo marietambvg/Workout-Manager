@@ -2,12 +2,76 @@
      data-id="stopwatch-timer-view" 
      data-role="view"  
      data-layout="main-layout"
-     data-show="app.stopwatch.init"
-     data-hide="app.stopwatch.close"
-    class="blackBackground"
+     data-show="app.stopwatchApi.init"
+     data-hide="app.stopwatchApi.close"
+     class="blackBackground"
      >
 
     <div id="stopwatch-timer">
         <h1>Stopwatch Timer </h1>
+        
+        <div visible="false" data-bind="visible:isVisibleStopwatchStatus" id="stopwatch-status-data">
+            <h2>Stopwatch current status </h2>
+            <table id="stopwatch-current-data" class="track-distance">
+                <tr>
+                    <td>Hours:</td>
+                    <td class="right-aligned" data-bind="text:stopwatchHours"></td>
+                </tr>
+                <tr>
+                    <td>Minutes:</td>
+                    <td class="right-aligned" data-bind="text:stopwatchMinutes"></td>
+                </tr>
+                <tr>
+                    <td>Seconds:</td>
+                    <td class="right-aligned" data-bind="text:stopwatchSeconds"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="startButtonHolder" id="start-stopwatch-button" visible="true" data-bind="visible:isVisibleStopwatchStartButton">
+            <button class="touchSurface"  
+                    id="start-stopwatch-button" 
+                    data-role="touch" 
+                    data-tap="app.stopwatchApi.startStopwatch">
+                <h3>Start stopwatch</h3>
+            </button>
+        </div>
+                
+
+        <div class="startButtonHolder" id="pause-stopwatch-buttonholder" visible="false" data-bind="visible:isVisibleStopwatchPauseButton">
+            <button class="touchSurface"  
+                    id="pause-stopwatch-button" 
+                    data-role="touch" 
+                    data-tap="app.stopwatchApi.pauseStopwatch">
+                <h3>Pause stopwatch</h3>
+            </button>
+        </div>
+        
+        <div class="startButtonHolder" id="continue-stopwatch-buttonholder" visible="false" data-bind="visible:isVisibleStopwatchContinueButton">
+            <button class="touchSurface"  
+                    id="continue-stopwatch-button" 
+                    data-role="touch" 
+                    data-tap="app.stopwatchApi.continueStopwatch">
+                <h3>Continue stopwatch</h3>
+            </button>
+        </div>
+        
+        <div class="startButtonHolder" id="stop-stopwatch-buttonholder" visible="false" data-bind="visible:isVisibleStopwatchStopButton">
+            <button class="touchSurface"  
+                    id="stop-stopwatch-button" 
+                    data-role="touch" 
+                    data-tap="app.stopwatchApi.stopStopwatch">
+                <h3>Stop stopwatch</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder" id="reset-stopwatch-buttonholder" visible="false" data-bind="visible:isVisibleStopwatchResetButton">
+            <button class="touchSurface"  
+                    id="reset-stopwatch-button" 
+                    data-role="touch" 
+                    data-tap="app.stopwatchApi.resetStopwatch">
+                <h3>Reset stopwatch</h3>
+            </button>
+        </div>
+        
     </div>
 </div>

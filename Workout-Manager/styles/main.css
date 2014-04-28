@@ -116,13 +116,30 @@ td, th
     margin-top: 50px;
 }
 
-#current-distance td, #distance-current-distance td
+#current-distance td, #distance-current-distance td, #countdown-current-data td, #stopwatch-current-data td
 {
     text-align: left;
     color: #FF0084;
     padding-left: 5px;
     padding-bottom: 20px;
     font-size: 20px;
+}
+
+#countdown-current-data td.right-aligned, #stopwatch-current-data td.right-aligned  
+{
+    text-align:right;
+    padding-right:15px;
+}
+#stop-stopwatch-buttonholder{
+    margin-top:5px;
+}
+
+#countdown-current-data, #stopwatch-current-data{
+    height:200px; 
+}
+
+#countdown-status-data{
+    height:350px;
 }
 
 #results td, #distance-results td
@@ -136,7 +153,7 @@ td, th
 
 
 
-.tdLabel, .inputBoxHolderIntervals label{
+.tdLabel, .inputBoxHolderIntervals label, span{
     font-size:15px;
     color: #35B3E6;
     }

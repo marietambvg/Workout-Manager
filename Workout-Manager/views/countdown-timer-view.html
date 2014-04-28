@@ -4,34 +4,84 @@
      data-layout="main-layout"
      data-show="app.countdownApi.init"
      data-hide="app.countdownApi.close"
-    class="blackBackground"
+     class="blackBackground"
      >
 
     <div id="countdown-timer">
         <h1>Countdown Timer </h1>
-        <div id="create-countdown-timer-user-data"  class="view-content">
+
+        <div visible="true" data-bind="visible:isVisibleCountdownInputs" id="create-countdown-timer-user-data"  class="view-content">
             <h2>Input time you want to countdown </h2>
             <div id="countdown-hours" class="inputBoxHolderIntervals">
                 <label for="variable-countdown-hours-input">Hours:</label>
                 <input id="variable-countdown-hours-input" type="number" placeholder="Hours"/>
             </div>
             <div id="countdown-minutes" class="inputBoxHolderIntervals">
-                 <label for="variable-countdown-minutes-input">Minutes:</label>
+                <label for="variable-countdown-minutes-input">Minutes:</label>
                 <input id="variable-countdown-minutes-input" type="number" placeholder="Minutes"/>
             </div>
             <div id="countdown-seconds" class="inputBoxHolderIntervals">
-                 <label for="variable-countdown-seconds-input">Seconds:</label>
+                <label for="variable-countdown-seconds-input">Seconds:</label>
                 <input  id="variable-countdown-seconds-input"  type="number" placeholder="Seconds"/>
             </div>
-            
         </div>
-    </div>
-    <div class="startButtonHolder" id="start-countdown-button">
-        <button class="touchSurface"  
-                id="start-standard-tabata-button" 
-                data-role="touch" 
-                data-tap="app.countdownApi.getCountdownInputData">
-            <h3>Start countdown</h3>
-        </button>
+
+        <div visible="true" data-bind="visible:isVisibleCountdownStatus" id="countdown-status-data">
+            <h2>Countdown current status </h2>
+            <table id="countdown-current-data" class="track-distance">
+                <tr>
+                    <td>Hours left:</td>
+                    <td class="right-aligned" data-bind="text:countdownHours"></td>
+                </tr>
+                <tr>
+                    <td>Minutes left:</td>
+                    <td class="right-aligned" data-bind="text:countdownMinutes"></td>
+                </tr>
+                <tr>
+                    <td>Seconds left:</td>
+                    <td class="right-aligned" data-bind="text:countdownSeconds"></td>
+                </tr>
+            </table>
+            
+            <div visible="false" data-bind="visible:isVisibleFinishCountdownStatus" id="finish-countdown-status-data">
+                <h2>Time finished!</h2>
+            </div>
+        </div>
+
+        <div class="startButtonHolder" id="start-countdown-button" visible="true" data-bind="visible:isVisibleCountdownStartButton">
+            <button class="touchSurface"  
+                    id="start-cowntdown-button" 
+                    data-role="touch" 
+                    data-tap="app.countdownApi.getCountdownInputData">
+                <h3>Start countdown</h3>
+            </button>
+        </div>
+
+        <div class="startButtonHolder" id="pause-countdown-buttonholder" visible="false" data-bind="visible:isVisibleCountdownPauseButton">
+            <button class="touchSurface"  
+                    id="pause-countdown-button" 
+                    data-role="touch" 
+                    data-tap="app.countdownApi.pauseCountdown">
+                <h3>Pause countdown</h3>
+            </button>
+        </div>
+
+        <div class="startButtonHolder" id="continue-countdown-buttonholder" visible="false" data-bind="visible:isVisibleCountdownContinueButton">
+            <button class="touchSurface"  
+                    id="continue-countdown-button" 
+                    data-role="touch" 
+                    data-tap="app.countdownApi.continueCountdown">
+                <h3>Continue countdown</h3>
+            </button>
+        </div>
+
+        <div class="startButtonHolder" id="reset-countdown-buttonholder" visible="false" data-bind="visible:isVisibleCountdownResetButton">
+            <button class="touchSurface"  
+                    id="reset-countdown-button" 
+                    data-role="touch" 
+                    data-tap="app.countdownApi.resetCountdown">
+                <h3>Reset countdown</h3>
+            </button>
+        </div>
     </div>
 </div>
