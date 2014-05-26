@@ -16,5 +16,9 @@ document.addEventListener("deviceready", function() {
                 app.application.navigate("views/distance-run-view.html#distance-run-view");
             },
             
+             navigateToRunForFun:function() {
+                app.application.navigate("views/fun-run-view.html#fun-run-view");
+            },
+            
         }}(app));
 });
