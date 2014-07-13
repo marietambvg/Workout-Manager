@@ -23,19 +23,18 @@ document.addEventListener("deviceready", function() {
     (function(a) { 
         a.funRun = {
             init:function(e) {
-                currentFunRunDistance=0;
-                currentFunRunSpeed=0;
-                currentFunRunTimeHours=0;
-                currentFunRunTimeMinutes=0;
-                currentFunRunTimeSeconds=0;
-                currentFunRunTime=currentFunRunTimeHours+" h." + currentFunRunTimeMinutes+" min."+currentFunRunTimeSeconds+" sec.";
+                currentFunRunDistance = 0;
+                currentFunRunSpeed = 0;
+                currentFunRunTimeHours = 0;
+                currentFunRunTimeMinutes = 0;
+                currentFunRunTimeSeconds = 0;
+                currentFunRunTime = currentFunRunTimeHours + " h. " + currentFunRunTimeMinutes + " min. " + currentFunRunTimeSeconds + " sec.";
                 vmFunRun = kendo.observable({
-                                                funRunDistance:currentFunRunDistance+" km",
-                                                isVisibleTrackFunrunTable:false,
-                                                funRunSpeed:currentFunRunSpeed+"km/hour",
+                                                funStatus:"Your current data:", 
+                                                funRunDistance:currentFunRunDistance + " km",
                                                 funRunTime:currentFunRunTime,
-                                                funStatus:"Your current data:",
-                                                isVisibleFunRunResults:false,
+                                                funRunSpeed:currentFunRunSpeed + " km/hour",
+                                                isVisibleFunRunTrackTable:true,
                                                 isVisibleFunRunStartButton:true,
                                                 isVisibleFunRunPauseButton:false,
                                                 isVisibleFunRunContinueButton:false,
@@ -43,11 +42,12 @@ document.addEventListener("deviceready", function() {
                     
                                             })
                 kendo.bind(e.view.element, vmFunRun, kendo.mobile.ui);
-                vmFunRun.set("funRunDistance", currentFunRunDistance);
-                vmFunRun.set("isVisibleTrackFunRunTable", true);
-                vmFunRun.set("funRunSpeed", currentFunRunSpeed);
-                vmFunRun.set("funRunTime", currentFunRunTime);
                 vmFunRun.set("funStatus", "Your current data:");
+                vmFunRun.set("funRunDistance", currentFunRunDistance+ " km");
+                vmFunRun.set("funRunTime", currentFunRunTime);
+                vmFunRun.set("funRunSpeed", currentFunRunSpeed+ " km/hour");
+                vmFunRun.set("isVisibleFunRunTrackTable", true);
+                vmFunRun.set("isVisibleFunRunStartButton", true);
             },
             
             close: function() {

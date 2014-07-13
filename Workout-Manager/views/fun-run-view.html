@@ -9,75 +9,59 @@
 
     <div id="fun-run">
         <h1>Run for fun </h1>
-        <div class="startButtonHolder" id="fun-run-button-start-button-holder" data-bind="visible:isVisibleStartFunRunButton" visible="true">
-            <button class="touchSurface" data-role="touch" data-tap="app.funRun.startRun">
-                <h3>START</h3>
-            </button>
-        </div>
 
-        <div class="track-distance-holder" id="fun-current-distance" data-bind="visible:isVisibleTrackFunRunTable" visible="false">
+        <div class="track-distance-holder" id="fun-current-distance" data-bind="visible:isVisibleFunRunTrackTable" visible="false">
             <div id="fun-current-result-time" class="current-results">
                 <h2 data-bind="text:funStatus"></h2>
             </div>
             <table class="track-distance">
                 <tr>
-                    <td>Current run distance</td>
-                    <td data-bind="text:funDistance"></td>
+                    <td>Current run distance:</td>
+                    <td data-bind="text:funRunDistance"></td>
                 </tr>
                 <tr>
-                    <td>Current speed</td>
-                    <td data-bind="text:funCurrentSpeed"></td>
+                    <td>Current speed:</td>
+                    <td data-bind="text:funRunSpeed"></td>
                 </tr>
                 <tr>
-                    <td>Current run time</td>
-                    <td data-bind="text:funCurrentRunTime"></td>
+                    <td>Current run time:</td>
+                    <td data-bind="text:funRunTime"></td>
                 </tr>
             </table>
-            <div class="startButtonHolder" id="fun-run-button-pause-button-holder" 
-                data-bind="visible:isVisibleFunRunPauseButton" visible="true">
-                <button class="touchSurface" data-role="touch" data-tap="app.funRun.pauseRun">
-                    <h3>Pause run</h3>
-                </button>
-            </div>
-            <div class="startButtonHolder" id="fun-run-button-continue-button-holder"
-                data-bind="visible:isVisibleFunRunContinueButton" visible="true">
-                <button class="touchSurface" data-role="touch" data-tap="app.funRun.continueRun">
-                    <h3>Countinue run</h3>
-                </button>
-            </div>
-            <div class="startButtonHolder" id="fun-run-button-reset-button-holder"
-                data-bind="visible:isVisibleFunRunResetButton" visible="true">
-                <button class="touchSurface" data-role="touch" data-tap="app.funRun.resetRun">
-                    <h3>Reset run</h3>
-                </button>
-            </div>
-            <div class="startButtonHolder" id="fun-run-button-stop-button-holder"
-                data-bind="visible:isVisibleFunRunStopButton" visible="true">
-                <button class="touchSurface" data-role="touch" data-tap="app.funRun.stopRun">
-                    <h3>Stop run</h3>
-                </button>
-            </div>
+        </div>
+        <div class="startButtonHolder" id="fun-run-button-start-button-holder" data-bind="visible:isVisibleFunRunStartButton" visible="true">
+            <button class="touchSurface" data-role="touch" data-tap="app.funRun.startRun">
+                <h3>START</h3>
+            </button>
+        </div>
+
+        <div class="startButtonHolder" id="fun-run-button-pause-button-holder" 
+             data-bind="visible:isVisibleFunRunPauseButton" visible="false">
+            <button class="touchSurface" data-role="touch" data-tap="app.funRun.pauseRun">
+                <h3>Pause run</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder" id="fun-run-button-continue-button-holder"
+             data-bind="visible:isVisibleFunRunContinueButton" visible="false">
+            <button class="touchSurface" data-role="touch" data-tap="app.funRun.continueRun">
+                <h3>Countinue run</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder" id="fun-run-button-reset-button-holder"
+             data-bind="visible:isVisibleFunRunResetButton" visible="true">
+            <button class="touchSurface" data-role="touch" data-tap="app.funRun.resetRun">
+                <h3>Reset run</h3>
+            </button>
+        </div>
+        <div class="startButtonHolder" id="fun-run-button-stop-button-holder"
+             data-bind="visible:isVisibleFunRunStopButton" visible="false">
+            <button class="touchSurface" data-role="touch" data-tap="app.funRun.stopRun">
+                <h3>Stop run</h3>
+            </button>
         </div>
 
         <div id="fun-results" data-bind="visible:isVisibleFunrunResults" visible="false">
-            <div id="fun-result-time">
-                <h2 data-bind="text:fun-status"></h2>
-            </div>
-            <table id="funrun-table-results">
-                <tr>
-                    <td>Run distance:</td>
-                    <td id="funrun-distance-result" data-bind="text:distanceResult"></td>
-                </tr>
-                <tr>
-                    <td>Average speed:</td>
-                    <td id="funrun-speed-result" data-bind="text:funSpeed"></td>
-                </tr>
-                <tr>
-                    <td>Run time:</td>
-                    <td id="funrun-time-result" data-bind="text:currentRunTime"></td>
-                </tr>
-            </table>
-
+            
             <div class="startButtonHolder">
                 <button class="touchSurface" data-role="touch" data-tap="app.funRun.save" id="fun-save-current-run" >
                     <h3>Save current run</h3>
